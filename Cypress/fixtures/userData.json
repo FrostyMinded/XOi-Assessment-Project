@@ -8,10 +8,17 @@
       "password": "WrongPass"
     },
     "shippingDetails": {
-      "name": "Jack Sparrow",
+      "Title": "Mr.",  
+      "firstname": "Jack",
+      "lastname": "Sparrow",
       "address": "123 Black Pearl Way",
-      "city": "Tortuga",
+      "country": "United States",
+      "state": "Oregon",
       "zip": "12345",
-      "country": "United States"
+      "city": "Tortuga",
+      "mobile": "1234567890",
+      "Day of Birth": "17",
+      "Month of Birth": "January",
+      "Year of Birth": "1982"
     }
   }
