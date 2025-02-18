@@ -77,13 +77,35 @@ Cypress.Commands.add('addProductToCart', (productSelector, productName) => {
   cy.contains(productName).should('be.visible');
 });
 
-Cypress.Commands.add('verify user details', (userData) => {
-  cy.get('[class="col-xs-12 col-sm-6"]').should('have.text', userData.shippingDetails.firstname);
-  cy.get('[class="col-xs-12 col-sm-6"]').should('have.text', userData.user.email);
-  cy.get('[class="col-xs-12 col-sm-6"]').should('have.text', userData.shippingDetails.address);
-  cy.get('[class="col-xs-12 col-sm-6"]').should('have.text', userData.shippingDetails.country);
-  cy.get('[class="col-xs-12 col-sm-6"]').should('have.text', userData.shippingDetails.state);
-  cy.get('[class="col-xs-12 col-sm-6"]').should('have.text', userData.shippingDetails.zip);
-  cy.get('[class="col-xs-12 col-sm-6"]').should('have.text', userData.shippingDetails.city);
-  cy.get('[class="col-xs-12 col-sm-6"]').should('have.text', userData.shippingDetails.mobile);
+Cypress.Commands.add('verifyUserDetails', (userData) => {
+  cy.contains(userData.shippingDetails.firstname).should('be.visible');
+  cy.contains(userData.shippingDetails.lastname).should('be.visible');
+  cy.contains(userData.shippingDetails.address).should('be.visible');
+  cy.contains(userData.shippingDetails.city).should('be.visible');
+  cy.contains(userData.shippingDetails.state).should('be.visible');
+  cy.contains(userData.shippingDetails.zip).should('be.visible');
+  cy.contains(userData.shippingDetails.country).should('be.visible');
+  cy.contains(userData.shippingDetails.mobile).should('be.visible');
+});
+
+Cypress.Commands.add('proceedToCheckout', () => {
+  cy.contains('a','Place Order').click();
+});
+
+Cypress.Commands.add('addPaymentDetails', (userData) => {
+  cy.fixture('userData').then((userData) => {
+    cy.get('[data-qa="name-on-card"]').type(userData.shippingDetails.firstname);
+    cy.get('[data-qa="card-number"]').type('4242424242424242');
+    cy.get('[data-qa="cvc"]').type('123');
+    cy.get('[data-qa="expiry-month"]').type('12');
+    cy.get('[data-qa="expiry-year"]').type('2030');
+    cy.get('[data-qa="pay-button"]').click();
+    cy.get('[data-qa="order-placed"]').should('be.visible');
+    cy.get('[data-qa="continue-button"]').should ('be.visible');
+  });
+});
+
+Cypress.Commands.add('deleteTestAccount', () => {
+  cy.contains('a', 'Delete Account').click();
+  cy.contains('Account Deleted').should('be.visible');
 });

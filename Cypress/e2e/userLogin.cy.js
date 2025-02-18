@@ -8,6 +8,8 @@ describe('Login Tests', () => {
     it('Login with valid credentials', function () {
       cy.login(this.userData.user.email, this.userData.user.password);
       cy.logout();
+      cy.login(this.userData.user.email, this.userData.user.password);
+      cy.deleteTestAccount();
     });
   });
   

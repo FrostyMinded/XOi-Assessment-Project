@@ -7,5 +7,6 @@ describe('User Registration', () => {
 
   it('Register a new user successfully', function () {
     cy.registerNewUser(this.userData);
+    cy.deleteTestAccount();
   });
 });
