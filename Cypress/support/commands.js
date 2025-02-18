@@ -70,9 +70,20 @@ Cypress.Commands.add('logout', () => {
 });
 
 Cypress.Commands.add('addProductToCart', (productSelector, productName) => {
-  cy.get(productSelector).click(); // Click product details
-  cy.get('[class="btn btn-default cart"]').click(); // Click Add to Cart button
-  cy.get('[data-dismiss="modal"]').click(); // Close modal
-  cy.contains('a', 'Cart').click(); // Navigate to Cart
-  cy.contains(productName).should('be.visible'); // Verify product in cart
+  cy.get(productSelector).click(); 
+  cy.get('[class="btn btn-default cart"]').click(); 
+  cy.get('[data-dismiss="modal"]').click(); 
+  cy.contains('a', 'Cart').click();
+  cy.contains(productName).should('be.visible');
+});
+
+Cypress.Commands.add('verify user details', (userData) => {
+  cy.get('[class="col-xs-12 col-sm-6"]').should('have.text', userData.shippingDetails.firstname);
+  cy.get('[class="col-xs-12 col-sm-6"]').should('have.text', userData.user.email);
+  cy.get('[class="col-xs-12 col-sm-6"]').should('have.text', userData.shippingDetails.address);
+  cy.get('[class="col-xs-12 col-sm-6"]').should('have.text', userData.shippingDetails.country);
+  cy.get('[class="col-xs-12 col-sm-6"]').should('have.text', userData.shippingDetails.state);
+  cy.get('[class="col-xs-12 col-sm-6"]').should('have.text', userData.shippingDetails.zip);
+  cy.get('[class="col-xs-12 col-sm-6"]').should('have.text', userData.shippingDetails.city);
+  cy.get('[class="col-xs-12 col-sm-6"]').should('have.text', userData.shippingDetails.mobile);
 });
