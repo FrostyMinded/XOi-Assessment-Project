@@ -1,13 +1,10 @@
 {
-    "validUser": {
-      "email": "mdiaz182@gmail.com",
-      "password": "Test@123"
-    },
-    "invalidUser": {
-      "email": "wronguser@example.com",
-      "password": "WrongPass"
-    },
-    "shippingDetails": {
+  "user": {
+    "email": "jacksparrow@testemail.com",
+    "password": "Test@pass"
+  },
+
+  "shippingDetails": {
       "Title": "Mr.",  
       "firstname": "Jack",
       "lastname": "Sparrow",
