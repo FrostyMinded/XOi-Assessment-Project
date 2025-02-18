@@ -68,3 +68,11 @@ Cypress.Commands.add('logout', () => {
   cy.get('[class="fa fa-lock"]').click();
   cy.url().should('include', '/login');
 });
+
+Cypress.Commands.add('addProductToCart', (productSelector, productName) => {
+  cy.get(productSelector).click(); // Click product details
+  cy.get('[class="btn btn-default cart"]').click(); // Click Add to Cart button
+  cy.get('[data-dismiss="modal"]').click(); // Close modal
+  cy.contains('a', 'Cart').click(); // Navigate to Cart
+  cy.contains(productName).should('be.visible'); // Verify product in cart
+});
