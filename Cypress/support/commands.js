@@ -87,7 +87,11 @@ Cypress.Commands.add('verifyUserDetails', (userData) => {
 });
 
 Cypress.Commands.add('proceedToCheckout', () => {
-  cy.contains('a','Place Order').click();
+  cy.get('[class="btn btn-default check_out"]').click();
+});
+
+Cypress.Commands.add('placeOrder', () => {
+  cy.contains('a', 'Place Order').click();
 });
 
 Cypress.Commands.add('addPaymentDetails', (userData) => {

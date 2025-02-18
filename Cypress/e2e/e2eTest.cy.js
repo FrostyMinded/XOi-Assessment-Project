@@ -3,21 +3,18 @@ describe('E-Commerce Flow', () => {
       cy.fixture('userData').then((data) => {
         this.userData = data;
       });
-    });
   
-    it('Login successfully', function () {
+    cy.session('userSession',() => {
       cy.login(this.userData.user.email, this.userData.user.password);
+      });
     });
   
-    it('Add a product to cart', function () {
-      cy.addProductToCart('[href="/product_details/2"]', 'Men Tshirt');
-    });
-  
-    it('Proceed to checkout', function () {
-      cy.get('[data-qa="checkout"]').click();
-    });
-  
-    it('Enter payment details and complete order', function () {
-      cy.addPaymentDetails();
+    it('Completes E-Commerce Flow', function () {
+      cy.visit('/'); 
+      cy.addProductToCart('[href="/product_details/2"]', 'Men Tshirt')
+        .then(() => cy.proceedToCheckout()) 
+        .then(() => cy.verifyUserDetails(this.userData))
+        .then(() => cy.placeOrder())
+        .then(() => cy.addPaymentDetails());
     });
   });
