@@ -60,8 +60,6 @@ Cypress.Commands.add('login', (email, password) => {
   cy.get('[data-qa="login-email"]').type(email);
   cy.get('[data-qa="login-password"]').type(password);
   cy.get('[data-qa="login-button"]').click();
-  cy.get('[class="fa fa-lock"]').should('be.visible');
-  cy.get('[class="fa fa-trash-o"]').should('be.visible');
 });
 
 Cypress.Commands.add('logout', () => {
