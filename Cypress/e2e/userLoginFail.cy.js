@@ -5,7 +5,7 @@ describe('Login Tests', () => {
       });
   });
 
-  it('Login with valid credentials', function () {
+  it('Login with invalid credentials', function () {
       cy.login('wrongemail@email.com', 'wrongpassword');
       cy.contains('Your email or password is incorrect!');
   });
