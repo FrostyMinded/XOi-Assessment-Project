@@ -1,0 +1,17 @@
+{
+    "validUser": {
+      "email": "mdiaz182@gmail.com",
+      "password": "Test@123"
+    },
+    "invalidUser": {
+      "email": "wronguser@example.com",
+      "password": "WrongPass"
+    },
+    "shippingDetails": {
+      "name": "Jack Sparrow",
+      "address": "123 Black Pearl Way",
+      "city": "Tortuga",
+      "zip": "12345",
+      "country": "United States"
+    }
+  }
